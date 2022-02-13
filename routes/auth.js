@@ -4,8 +4,9 @@ const multer = require('multer');
 const upload = multer();
 const { createUser } = require('../model/users');
 
+
 router.get('/', async (req, res) => {
-  const user = await createUser();
+  const user = await createUser(data);
   res.send('user is ok');
 });
 
