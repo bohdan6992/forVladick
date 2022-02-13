@@ -4,21 +4,21 @@ const User = new Schema({
   username: {
     type: String,
     unique: true,
-    // required: true,
+    required: true,
   },
   nickname: {
     type: String,
     unique: true,
-    // required: true,
+    required: true,
   },
   email: {
     type: String,
     unique: true,
-    // required: true,
+    required: true,
   },
   password: {
     type: String,
-    // required: true, 
+    required: true, 
   },
   roles: [{
     type: String,

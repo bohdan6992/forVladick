@@ -1,15 +1,14 @@
 const User = require('./schemas/user');
 const mongoose = require('mongoose');
 
-
 const createUser = async (obj) => {
   const user = new User({
     name: obj.name,
     nickname: obj.nickname,
     email: obj.email,
     password: obj.password, 
-    addedwords: obj.addedwords, 
-    learnedwords: obj.learnedwords, 
+    addedwords: 0, 
+    learnedwords: 0, 
   });
   try {
     await user.save();
@@ -17,7 +16,6 @@ const createUser = async (obj) => {
     console.log(err);
   }
 };
-
 
 module.exports = {
   createUser,
