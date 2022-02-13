@@ -11,4 +11,8 @@ router.get('/', async (req, res) => {
   res.send('user is ok');
 });
 
+router.get('/login', authController.getLoginPage);
+
+router.post('/login', upload.none(), authController.login);
+
 module.exports = router;

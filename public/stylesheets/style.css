@@ -9,3 +9,55 @@ a {
 div {
   font-size: 20px;
 }
+form {
+  margin-top: 150px;
+}
+.login {
+  margin: 0 auto;
+  width: 360px;
+  height: 360px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+.answer {
+  margin: 0 auto;
+  border: 2px solid red;
+  border-radius: 5px;
+  text-align: center;
+  width: 290px;
+  height: 60px;
+  padding-top: 40px;
+  display: none;
+}
+input {
+  border: 2px solid gray;
+  border-radius: 5px;
+  width: 260px;
+  height: 25px;
+  margin-top: 5px;
+}
+.input-reg {
+  margin: 20px 0px 20px 40px;
+}
+.button-reg {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+.reg {
+  text-align: center;
+}
+.registration {
+  margin-top: 10px;
+  text-align: center;
+}
+button {
+  width: 260px;
+  height: 40px;
+  font-size: 24px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logo {
+  margin: 0 auto;
+}

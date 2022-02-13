@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const createUser = async (obj) => {
   const user = new User({
-    username: obj.name,
+    username: obj.username,
     nickname: obj.nickname,
     email: obj.email,
     password: obj.password, 
