@@ -2,7 +2,8 @@ const { Schema, model } = require('mongoose');
 
 const Cards = new Schema({
   cardsArr: [{
-    type: String,
+    word: String,
+    translation: String
   }]
 });
 
