@@ -1,7 +1,6 @@
 const Role = require('../model/schemas/role');
 const User = require('../model/schemas/user');
 const bcrypt = require('bcrypt');
-const { validationResult  } = require('express-validator');
 
 const authController = {
 
@@ -32,6 +31,7 @@ const authController = {
       user.save();
       // JWT
       return res.send('User created')
+      
     } catch (e) {
       console.log(e);
       res.send('Registration error');
@@ -39,7 +39,7 @@ const authController = {
   },
   
   getRegistrationPage: async (req, res) => {
-    res.render('auth');
+    res.render('registration');
   },
 
   login: async (req, res) => {
