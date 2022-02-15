@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <div class="user">
+            <div class="name">
+              <%= user.username %> <%= user.nickname %>  
+            </div>
+            <div>
+              <span class="birthDate"><%= user.email %> </span>
+            </div> 
+            <div class="create">
+              <a href="/medcard/<%= student._id %>" class="btn btn3">Update</a>
+            </div>
+          </div> 
+        </td>
+      </tr>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
