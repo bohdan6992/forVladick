@@ -3,6 +3,7 @@ const User = require('../model/schemas/user');
 const bcrypt = require('bcrypt');
 const { validationResult  } = require('express-validator');
 
+
 const authController = {
   registration: async (req, res) => {
     try {
