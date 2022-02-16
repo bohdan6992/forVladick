@@ -4,12 +4,14 @@ const bcrypt = require('bcrypt');
 const { validationResult  } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
+const { secret } = require('../config/config');
+
 const generateAccessToken = (id, roles) => {
   const payload = {
     id,
     roles,
   }
-  
+
   return jwt.sign(payload, secret);
 };
 
@@ -40,8 +42,13 @@ const authController = {
         learnedwords: 0,
       });
       user.save();
-      // JWT
-      return res.send('User created')
+      
+      const token = generateAccessToken(user._id, user.roles);
+      return res
+               .cookie('acces_token', token)
+               .json({token, page: '/user'});
+
+      // return res.send('User created')
     } catch (e) {
       console.log(e);
       res.send('Registration error');

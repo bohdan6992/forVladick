@@ -10,7 +10,12 @@ formEl.addEventListener('submit', (event) => {
   axios
   .post('/auth/login', data)
   .then((r) => {
-    answEl.innerHTML = r.data;
+    if (!r.data.page) {
+      window.Headers
+      answEl.innerHTML = r.data;
+    } else {
+      window.location.replace(`http://127.0.0.1:3000/user`);
+    }
   })
     .catch((error) => {
       console.log(error);
