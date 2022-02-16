@@ -31,4 +31,8 @@ router.post('/registration', upload.none(),
 ], 
 authController.registration);
 
+router.get('/login', authController.getLoginPage);
+
+router.post('/login', upload.none(), authController.login);
+
 module.exports = router;

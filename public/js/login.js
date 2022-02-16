@@ -20,11 +20,3 @@ formEl.addEventListener('submit', (event) => {
 startBtn.addEventListener('click', () => {
   answEl.style.display = 'block';
 });
-
-
-// if (!r.data.page) {
-//   window.Headers
-//   answEl.innerHTML = r.data;
-// } else {
-//   window.location.replace(`http://127.0.0.1:3000${r.data}`);
-// }
