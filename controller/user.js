@@ -1,11 +1,9 @@
-const {
-  getUserById,
-} = require('../model/users');
+const { getUserById } = require('../model/user');
 
-const students = {
+const user = {
   getUserById: async (id) => {
     return await getUserById(id); 
   }, 
 };
 
-module.exports = students;
+module.exports = user;

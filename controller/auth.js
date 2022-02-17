@@ -62,6 +62,13 @@ const authController = {
     
   },
 
+  logout: async (req, res) =>{
+    return res
+      .clearCookie('access_token')
+      .redirect('http://127.0.0.1:3000/auth/login');
+
+  },
+
   getLoginPage: async (req, res) => {
     console.log(req.body);
     res.render('login');

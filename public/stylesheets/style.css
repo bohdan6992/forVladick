@@ -64,3 +64,31 @@ button {
 .button-click{
   width: 209px;
 }
+.user-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+.user-board{
+  position: relative;
+  border: 1px solid black;
+  height: 95vh;
+  width: 25%;
+}
+.user-header{
+  position: absolute;
+  right: 0;
+}
+.card-board{
+  border: 1px solid black;
+  height: 95vh;
+  width: 70%;
+}
+.user-photo{
+  width: 50%;
+  height: 25vh;
+  border: 1px solid red;
+  border-radius: 100%;
+  background-color: aquamarine;
+}
+
+
