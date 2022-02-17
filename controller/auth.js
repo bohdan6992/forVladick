@@ -1,9 +1,7 @@
 const Role = require('../model/schemas/role');
 const User = require('../model/schemas/user');
 const bcrypt = require('bcrypt');
-const { validationResult  } = require('express-validator');
 const jwt = require('jsonwebtoken');
-
 const { secret } = require('../config/config');
 
 const generateAccessToken = (id, roles) => {
@@ -19,10 +17,6 @@ const authController = {
 
   registration: async (req, res) => {
     try {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.send(`Registration error ${errors.errors[0].msg}`);
-      }
       const { username, nickname, email, password } = req.body;
       const newUser = await User.findOne({username}); 
       // check by all unique params
@@ -41,14 +35,14 @@ const authController = {
         addedwords: 0,
         learnedwords: 0,
       });
-      user.save();
+      user.save((err, result) => {
+        if (err) return console.log(err);
+      });
       
       const token = generateAccessToken(user._id, user.roles);
       return res
                .cookie('acces_token', token)
                .json({token, page: '/user'});
-
-      // return res.send('User created')
     } catch (e) {
       console.log(e);
       res.send('Registration error');
@@ -56,7 +50,7 @@ const authController = {
   },
   
   getRegistrationPage: async (req, res) => {
-    res.render('auth');
+    res.render('registration');
   },
 
   login: async (req, res) => {

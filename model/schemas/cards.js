@@ -8,3 +8,4 @@ const Cards = new Schema({
 });
 
 module.exports = model('Cards', Cards);
+
