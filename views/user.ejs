@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="user-wrapper">
+      <div class="card-board">
+        <div class="card-board_content">
+          <h2>CARDS</h2>
+        </div>
+      </div>
+      <div class="user-board">
+        <div class="user-header">
+          <a href="/auth/logout">logout</a>
+        </div>
+        <div class="user-info">
+          <div class="user-photo">
+          </div>
+          <h4><%= userById.nickname %></h4>
+          <p>Name: <%= userById.username %></p>
+          <p>Email: <%= userById.email %></p>
+          <p>Aded words: <%= userById.addedwords%></p>
+          <p>Learned words: <%= userById.learnedwords%></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="/js/auth.js"></script>
+  </body>
+</html>

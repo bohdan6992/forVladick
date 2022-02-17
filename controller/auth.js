@@ -18,10 +18,14 @@ const authController = {
   registration: async (req, res) => {
     try {
       const { username, nickname, email, password } = req.body;
-      const newUser = await User.findOne({username}); 
+      const newUser = await User.findOne({nickname}); 
+      const newEmail = await User.findOne({email});
       // check by all unique params
       if (newUser) {
-        return res.send('Username already exists');
+        return res.send('Nickname already exists');
+      }
+      if (newEmail) {
+        return res.send('Email already exists');
       }
     
       const hashPassword = bcrypt.hashSync(password, 10);
@@ -79,6 +83,13 @@ const authController = {
       res.send('Login error');
     }
     
+  },
+
+  logout: async (req, res) =>{
+    return res
+      .clearCookie('access_token')
+      .redirect('http://127.0.0.1:3000/auth/login');
+
   },
 
   getLoginPage: async (req, res) => {
