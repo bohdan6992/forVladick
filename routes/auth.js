@@ -3,12 +3,13 @@ const router = express.Router();
 const multer = require('multer');
 const upload = multer();
 const authController = require('../controller/auth');
-const authMiddleware = require('../middlewares/authMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware');
+const { validate, userValidationRules } = require('../middlewares/validationMiddleware');
 
 
 router.get('/registration', authController.getRegistrationPage);
 
-router.post('/registration',authMiddleware(), upload.none(), authController.registration);
+router.post('/registration', upload.none(), userValidationRules(), validate, authController.registration);
 
 router.get('/login', authController.getLoginPage);
 

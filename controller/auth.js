@@ -6,10 +6,6 @@ const authController = {
 
   registration: async (req, res) => {
     try {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.send(`Registration error ${errors.errors[0].msg}`);
-      }
       const { username, nickname, email, password } = req.body;
       const newUser = await User.findOne({username}); 
       // check by all unique params
