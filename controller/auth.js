@@ -35,14 +35,18 @@ const authController = {
         addedwords: 0,
         learnedwords: 0,
       });
+      let userId = '';
       user.save((err, result) => {
         if (err) return console.log(err);
+        userId = result._id
+          .match(/(?:"[^"]*"|^[^"]*$)/)[0]
+          .replace(/"/g, "")
       });
       
       const token = generateAccessToken(user._id, user.roles);
       return res
-               .cookie('acces_token', token)
-               .json({token, page: '/user'});
+               .cookie('access_token', token)
+               .json({token, page: `/user/${userId}`});
     } catch (e) {
       console.log(e);
       res.send('Registration error');
