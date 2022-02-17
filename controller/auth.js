@@ -12,10 +12,14 @@ const authController = {
         return res.send(`Registration error ${errors.errors[0].msg}`);
       }
       const { username, nickname, email, password } = req.body;
-      const newUser = await User.findOne({username}); 
+      const newUser = await User.findOne({nickname}); 
+      const newEmail = await User.findOne({email});
       // check by all unique params
       if (newUser) {
-        return res.send('Username already exists');
+        return res.send('Nickname already exists');
+      }
+      if (newEmail) {
+        return res.send('Email already exists');
       }
     
       const hashPassword = bcrypt.hashSync(password, 10);
@@ -39,7 +43,7 @@ const authController = {
   },
   
   getRegistrationPage: async (req, res) => {
-    res.render('auth');
+    res.render('registration');
   },
 
   login: async (req, res) => {
