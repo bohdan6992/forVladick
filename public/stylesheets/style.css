@@ -61,9 +61,6 @@ button {
 .logo {
   margin: 0 auto;
 }
-.button-click{
-  width: 209px;
-}
 .user-wrapper{
   display: flex;
   justify-content: space-between;
