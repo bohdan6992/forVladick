@@ -1,6 +1,17 @@
 const Role = require('../model/schemas/role');
 const User = require('../model/schemas/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { secret } = require('../config/config');
+
+const generateAccessToken = (id, roles) => {
+  const payload = {
+    id,
+    roles,
+  }
+
+  return jwt.sign(payload, secret);
+};
 
 const authController = {
 
@@ -24,10 +35,14 @@ const authController = {
         addedwords: 0,
         learnedwords: 0,
       });
-      user.save();
-      // JWT
-      return res.send('User created')
+      user.save((err, result) => {
+        if (err) return console.log(err);
+      });
       
+      const token = generateAccessToken(user._id, user.roles);
+      return res
+               .cookie('acces_token', token)
+               .json({token, page: '/user'});
     } catch (e) {
       console.log(e);
       res.send('Registration error');
@@ -49,8 +64,12 @@ const authController = {
     if (!validPassword) {
       return res.send('Введен не верный пароль');
     }
-      // JWT
-      res.send('/user');
+      const token = generateAccessToken(user._id, user.roles);
+      return res
+               .cookie('acces_token', token)
+               .json({token, page: '/user'});
+
+      // res.send('/user');
     } catch (err) {
       console.log(err);
       res.send('Login error');

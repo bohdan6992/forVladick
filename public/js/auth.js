@@ -16,7 +16,7 @@ formEl.addEventListener('submit', (event) => {
         window.Headers
         answEl.innerHTML = r.data;
       } else {
-        window.location.replace(`http://127.0.0.1:3000${r.data}`);
+        window.location.replace(`http://127.0.0.1:3000/user`);
       }
     })
     .catch((error) => {
